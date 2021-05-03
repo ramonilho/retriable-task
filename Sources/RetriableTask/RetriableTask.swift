@@ -5,10 +5,11 @@ public struct RetriableTask<Success, Failure: Error> {
     private let task: (@escaping TaskResult) -> Void
     private let shouldStopRetrying: (Failure) -> Bool
     
-    public init(maxAttempts: Int,
-                task: @escaping (@escaping TaskResult) -> Void,
-                shouldStopRetrying: @escaping (Failure) -> Bool = { _ in false })
-    {
+    public init(
+        maxAttempts: Int,
+        task: @escaping (@escaping TaskResult) -> Void,
+        shouldStopRetrying: @escaping (Failure) -> Bool = { _ in false }
+    ) {
         self.maxAttempts = maxAttempts
         self.task = task
         self.shouldStopRetrying = shouldStopRetrying
