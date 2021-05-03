@@ -1,4 +1,3 @@
-
 public struct RetriableTask<Success, Failure: Error> {
     public typealias TaskResult = (Result<Success, Failure>) -> Void
     
